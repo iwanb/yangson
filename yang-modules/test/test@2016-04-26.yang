@@ -94,6 +94,11 @@ module test {
             }
           }
         }
+        leaf leafGroup {
+          type uint8 {
+            default "10";
+          }
+        }
       }
       leaf leafE {
         type hex-number;

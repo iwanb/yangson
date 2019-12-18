@@ -49,6 +49,7 @@ tree = """+--rw (test:choiA)?
 |     |  |  +--rw leafP? <uint8>
 |     |  |  +--rw leafU? <boolean>
 |     |  +--rw leafG? <yang-identifier(string)>
+|     |  +--rw leafGroup? <uint8>
 |     +--rw leafE <hex-number(string)>
 |     +--rw leafF <boolean>
 |     +--rw leafW? <typE(leafref)>
@@ -167,6 +168,8 @@ def test_schema(data_model):
         "/testb:leafN/leafN"))
     lc = cb.get_data_child("leafC", "testb")
     llb = data_model.get_schema_node("/test:choiA/llistB/llistB")
+    lgroup = data_model.get_data_node("/test:contA/listA/contD/leafGroup")
+    assert lgroup.type.default == 10
     lj = data_model.get_data_node("/test:contA/listA/contD/contE/leafJ")
     assert data_model.get_data_node("/test:contA/listA/contD/leafM") is None
     llc = data_model.get_schema_node("/testb:rpcA/output/llistC")
